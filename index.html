@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dear Moza 💌</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(
+    135deg, #fff0f5, #ffd6e7, #ffeaf2
+  );
+  color: #70435a;
+  overflow-x: hidden;
+  padding: 25px 15px;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255,255,255,.94);
+  border-radius: 28px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 15px 45px rgba(227,95,144,.18);
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  color: #df598b;
+  margin: 15px 0;
+  font-size: 34px;
+}
+
+h2 {
+  color: #df598b;
+  margin: 18px 0;
+  font-size: 25px;
+}
+
+p {
+  line-height: 1.9;
+  margin: 14px 0;
+  font-size: 16px;
+}
+
+.emoji {
+  font-size: 65px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 24px;
+  margin: 8px 4px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.btn-pink {
+  color: white;
+  background: linear-gradient(
+    135deg, #f58aaf, #e34b86
+  );
+  box-shadow: 0 6px 15px rgba(227,75,134,.25);
+}
+
+.btn-soft {
+  color: #bd507c;
+  background: #ffe0ec;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fade {
+  animation: fadeIn .7s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================
+   SURAT ROMANTIS
+========================== */
+
+.letter {
+  background: #fff3f8;
+  text-align: left;
+  border-radius: 18px;
+  padding: 23px;
+  margin: 22px 0;
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: pre-line;
+  min-height: 250px;
+}
+
+/* ==========================
+   KARTU SCREENSHOT
+========================== */
+
+.screenshot-card {
+  background: linear-gradient(
+    145deg, #fff9fc, #ffe1ed
+  );
+  border: 2px solid #ffc6dc;
+  border-radius: 24px;
+  padding: 35px 20px;
+  margin: 20px 0;
+  box-shadow: 0 10px 25px rgba(227,75,134,.12);
+}
+
+.card-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #c56891;
+  font-weight: bold;
+}
+
+.screenshot-card h2 {
+  font-size: 28px;
+  margin: 18px 0;
+}
+
+.screenshot-card p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.signature {
+  margin-top: 28px;
+  font-size: 13px;
+  color: #bd7291;
+}
+
+.instruction {
+  background: #fff0f6;
+  padding: 18px;
+  border-radius: 16px;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.instruction strong {
+  color: #d84b84;
+}
+
+/* ==========================
+   ANIMASI HATI
+========================== */
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  pointer-events: none;
+  animation: floatHeart linear forwards;
+  opacity: .6;
+  z-index: 1;
+}
+
+@keyframes floatHeart {
+  to {
+    transform: translateY(-110vh) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+/* ==========================
+   TOMBOL MUSIK
+========================== */
+
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.music-btn {
+  background: #ffffff;
+  color: #d84b84;
+  border: 2px solid #ffc6dc;
+  border-radius: 50px;
+  padding: 13px 18px;
+  font-size: 15px;
+  box-shadow: 0 5px 20px rgba(227,75,134,.25);
+}
+
+.music-btn.playing {
+  animation: musicPulse 2s infinite;
+}
+
+@keyframes musicPulse {
+  50% {
+    box-shadow: 0 0 25px rgba(227,75,134,.55);
+  }
+}
+
+footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #bb8ca2;
+}
+
+@media(max-width:400px) {
+  .container {
+    padding: 28px 18px;
+  }
+
+  h1 {
+    font-size: 29px;
+  }
+
+  .screenshot-card h2 {
+    font-size: 24px;
+  }
+
+  .music-control {
+    right: 10px;
+    bottom: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ==========================
+     BACKSOUND ROMANTIS
+========================== -->
+
+<audio id="romanticMusic" loop preload="auto">
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- TOMBOL PLAY / PAUSE MUSIK -->
+
+<div class="music-control">
+  <button
+    id="musicButton"
+    class="music-btn"
+    onclick="toggleMusic()"
+    aria-label="Putar musik"
+  >
+    🎵 Play
+  </button>
+</div>
+
+
+<div class="container">
+
+<!-- ==========================
+     HALAMAN 1 - PEMBUKA
+========================== -->
+
+<section id="opening" class="fade">
+
+  <div class="emoji">💌</div>
+
+  <h1>Dear Moza,</h1>
+
+  <p>
+    Ada sesuatu yang pengin aku sampein
+    ke kamu...
+  </p>
+
+  <p>
+    Mungkin ini sedikit tiba-tiba,
+    tapi aku pengin kamu tahu
+    sesuatu yang selama ini aku rasain.
+  </p>
+
+  <button class="btn-pink" onclick="openLetter()">
+    Buka suratnya 💗
+  </button>
+
+</section>
+
+
+<!-- ==========================
+     HALAMAN 2 - SURAT
+========================== -->
+
+<section id="message" class="hidden">
+
+  <div class="emoji">🌷</div>
+
+  <h1>Untuk Moza</h1>
+
+  <div class="letter" id="letterText"></div>
+
+  <button
+    id="nextBtn"
+    class="btn-pink hidden"
+    onclick="showQuestion()"
+  >
+    Ada satu hal lagi... ✨
+  </button>
+
+</section>
+
+
+<!-- ==========================
+     HALAMAN 3 - PERTANYAAN
+========================== -->
+
+<section id="question" class="hidden">
+
+  <div class="emoji">🥹💖</div>
+
+  <h1>Moza...</h1>
+
+  <p>
+    Aku nggak tahu apa kamu punya
+    perasaan yang sama.
+  </p>
+
+  <p>
+    Tapi aku ingin mengenal kamu
+    lebih jauh, bukan cuma sebagai teman.
+  </p>
+
+  <h2>
+    Would you be my girlfriend? 💕
+  </h2>
+
+  <p style="font-size:13px;opacity:.75;">
+    Jawab sesuai perasaan kamu ya,
+    nggak perlu merasa terpaksa 🤍
+  </p>
+
+  <button
+    class="btn-pink"
+    onclick="answerYes()"
+  >
+    Mau dong! 💗
+  </button>
+
+  <button
+    class="btn-soft"
+    onclick="answerNotYet()"
+  >
+    Belum bisa 🫶
+  </button>
+
+</section>
+
+
+<!-- ==========================
+     HALAMAN 4 - HASIL
+========================== -->
+
+<section id="result" class="hidden">
+
+  <h1>Jawaban Moza 💌</h1>
+
+  <div class="screenshot-card" id="screenshotCard">
+
+    <div class="card-label">
+      A LITTLE MESSAGE FOR US
+    </div>
+
+    <div
+      id="resultEmoji"
+      class="emoji"
+      style="margin-top:20px;"
+    ></div>
+
+    <h2 id="resultTitle"></h2>
+
+    <p id="resultMessage"></p>
+
+    <div class="signature">
+      With love, Moza 💗
+    </div>
+
+  </div>
+
+  <div class="instruction">
+
+    📸 <strong>
+      Screenshot jawaban kamu di atas ya!
+    </strong>
+
+    <p>
+      Terus kirim screenshot-nya
+      ke WhatsApp aku.
+    </p>
+
+    <p>
+      Aku tunggu jawabannya,
+      Moza! 💌🥹
+    </p>
+
+  </div>
+
+  <button
+    class="btn-pink"
+    onclick="downloadCard()"
+  >
+    Simpan kartu sebagai gambar 📸
+  </button>
+
+  <button
+    class="btn-soft"
+    onclick="restart()"
+  >
+    Baca lagi 💌
+  </button>
+
+</section>
+
+<footer>
+  Made with ❤️, khusus buat Moza.
+</footer>
+
+</div>
+
+
+<script>
+
+/* ==========================
+   MUSIK ROMANTIS
+========================== */
+
+const music = document.getElementById("romanticMusic");
+const musicButton = document.getElementById("musicButton");
+
+music.volume = 0.35;
+
+function updateMusicButton() {
+  if (music.paused) {
+    musicButton.textContent = "🎵 Play";
+    musicButton.classList.remove("playing");
+    musicButton.setAttribute("aria-label", "Putar musik");
+  } else {
+    musicButton.textContent = "⏸ Pause";
+    musicButton.classList.add("playing");
+    musicButton.setAttribute("aria-label", "Jeda musik");
+  }
+}
+
+async function startMusic() {
+  try {
+    await music.play();
+  } catch (error) {
+    console.log("Musik belum bisa diputar:", error);
+  }
+
+  updateMusicButton();
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    startMusic();
+  } else {
+    music.pause();
+    updateMusicButton();
+  }
+}
+
+music.addEventListener("play", updateMusicButton);
+music.addEventListener("pause", updateMusicButton);
+music.addEventListener("error", () => {
+  console.log("File romantic.mp3 tidak ditemukan.");
+});
+
+
+/* ==========================
+   SURAT UNTUK MOZA
+========================== */
+
+const letter = `Hai, Moza...
+
+Sebenernya ada sesuatu yang mau aku sampein.
+
+Aku nggak tahu kapan tepatnya, tapi sejak kenal kamu, ada banyak hal kecil yang bikin aku senyum sendiri.
+
+Mulai dari obrolan sederhana, candaan random, sampai hal-hal kecil tentang kamu.
+
+Tanpa sadar, ngobrol sama kamu jadi salah satu hal yang aku tunggu setiap hari.
+
+Aku suka cara kamu cerita.
+Aku suka cara kamu bercanda.
+Dan yang paling penting, aku suka kamu apa adanya.
+
+Aku tahu kita belum lama kenal, dan mungkin masih banyak hal tentang satu sama lain yang belum kita tahu.
+
+Tapi entah kenapa, dalam waktu yang belum begitu lama ini, kamu berhasil bikin aku ngerasa nyaman dengan cara yang sederhana.
+
+Aku juga sadar, perasaan nggak harus selalu datang setelah kenal bertahun-tahun.
+
+Kadang, ada seseorang yang hadir dan tanpa disadari jadi punya tempat spesial di hati.
+
+Dan buat aku,
+orang itu adalah kamu, Moza.
+
+Aku nggak bisa janji semuanya bakal selalu sempurna.
+
+Tapi aku mau berusaha jadi seseorang yang bisa bikin kamu nyaman, dihargai, dan bahagia.
+
+Aku juga nggak mau terburu-buru atau bikin kamu merasa terpaksa.
+
+Aku cuma berharap kita punya kesempatan buat saling mengenal lebih jauh dan tumbuh bareng.
+
+Aku nggak mau cuma menyimpan perasaan ini sendiri.
+
+Jadi hari ini,
+aku mau jujur sama kamu...
+
+Ada satu pertanyaan yang pengin aku tanyain. 💗`;
+
+
+/* ==========================
+   PINDAH HALAMAN
+========================== */
+
+function showPage(id) {
+
+  document.querySelectorAll(".container section")
+    .forEach(section => {
+      section.classList.add("hidden");
+      section.classList.remove("fade");
+    });
+
+  const page = document.getElementById(id);
+
+  page.classList.remove("hidden");
+  page.classList.add("fade");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* ==========================
+   EFEK MENGETIK SURAT
+========================== */
+
+let typingInterval;
+
+function openLetter() {
+
+  // Musik dimulai setelah klik tombol.
+  startMusic();
+
+  showPage("message");
+
+  const target =
+    document.getElementById("letterText");
+
+  target.textContent = "";
+
+  document.getElementById("nextBtn")
+    .classList.add("hidden");
+
+  clearInterval(typingInterval);
+
+  let index = 0;
+
+  typingInterval = setInterval(() => {
+
+    target.textContent += letter.charAt(index);
+    index++;
+
+    if (index >= letter.length) {
+
+      clearInterval(typingInterval);
+
+      document.getElementById("nextBtn")
+        .classList.remove("hidden");
+
+    }
+
+  }, 23);
+}
+
+function showQuestion() {
+  showPage("question");
+}
+
+
+/* ==========================
+   JAWABAN MOZA
+========================== */
+
+let currentAnswer = "";
+
+function answerYes() {
+
+  currentAnswer = "yes";
+
+  showPage("result");
+
+  document.getElementById("resultEmoji")
+    .textContent = "🥰💞";
+
+  document.getElementById("resultTitle")
+    .textContent = "Aku mau! 💗";
+
+  document.getElementById("resultMessage")
+    .textContent =
+      "Yeay! Aku, Moza, mau jadi pacar kamu! " +
+      "Semoga kita bisa saling mengenal, " +
+      "saling menjaga, dan bikin banyak " +
+      "kenangan indah bareng. 💕";
+
+  for (let i = 0; i < 30; i++) {
+    setTimeout(createHeart, i * 100);
+  }
+}
+
+function answerNotYet() {
+
+  currentAnswer = "notyet";
+
+  showPage("result");
+
+  document.getElementById("resultEmoji")
+    .textContent = "🌷🤍";
+
+  document.getElementById("resultTitle")
+    .textContent = "Belum bisa 🤍";
+
+  document.getElementById("resultMessage")
+    .textContent =
+      "Makasih ya udah jujur tentang " +
+      "perasaan kamu. Untuk sekarang, " +
+      "aku belum bisa menerima. " +
+      "Semoga kamu bisa menghargai " +
+      "jawabanku ya. 🌷";
+}
+
+
+/* ==========================
+   RESTART WEBSITE
+========================== */
+
+function restart() {
+
+  clearInterval(typingInterval);
+
+  currentAnswer = "";
+
+  showPage("opening");
+}
+
+
+/* ==========================
+   SIMPAN KARTU SCREENSHOT
+========================== */
+
+function downloadCard() {
+
+  if (!currentAnswer) return;
+
+  const canvas = document.createElement("canvas");
+
+  canvas.width = 1080;
+  canvas.height = 1350;
+
+  const ctx = canvas.getContext("2d");
+
+  // Background gradasi
+  const gradient = ctx.createLinearGradient(
+    0, 0, 1080, 1350
+  );
+
+  gradient.addColorStop(0, "#fff4fa");
+  gradient.addColorStop(1, "#ffd4e5");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 1080, 1350);
+
+  // Kartu utama
+  ctx.fillStyle = "#ffffff";
+
+  ctx.beginPath();
+  ctx.roundRect(65, 75, 950, 1200, 45);
+  ctx.fill();
+
+  ctx.strokeStyle = "#ffc6dc";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  ctx.textAlign = "center";
+
+  // Label kartu
+  ctx.fillStyle = "#c56891";
+  ctx.font = "bold 30px Arial";
+
+  ctx.fillText(
+    "A LITTLE MESSAGE FOR US",
+    540, 245
+  );
+
+  // Dekorasi
+  ctx.font = "95px Arial";
+
+  ctx.fillText(
+    currentAnswer === "yes" ? "💗" : "🌷",
+    540, 410
+  );
+
+  // Judul
+  ctx.fillStyle = "#df598b";
+  ctx.font = "bold 70px Arial";
+
+  const title = currentAnswer === "yes"
+    ? "Aku mau!"
+    : "Belum bisa";
+
+  ctx.fillText(title, 540, 555);
+
+  // Isi pesan
+  ctx.fillStyle = "#70435a";
+  ctx.font = "37px Arial";
+
+  const message = document.getElementById(
+    "resultMessage"
+  ).textContent;
+
+  const lines = wrapText(
+    ctx,
+    message,
+    750
+  );
+
+  lines.forEach((line, index) => {
+    ctx.fillText(
+      line,
+      540,
+      690 + (index * 60)
+    );
+  });
+
+  // Penutup
+  ctx.fillStyle = "#bd7291";
+  ctx.font = "32px Arial";
+
+  ctx.fillText(
+    "With love, Moza",
+    540, 1170
+  );
+
+  // Download
+  const link = document.createElement("a");
+
+  link.download = "jawaban-moza.png";
+  link.href = canvas.toDataURL("image/png");
+
+  link.click();
+}
+
+
+/* ==========================
+   FORMAT TEKS GAMBAR
+========================== */
+
+function wrapText(ctx, text, maxWidth) {
+
+  const words = text.split(" ");
+  const lines = [];
+
+  let line = "";
+
+  words.forEach(word => {
+
+    const testLine = line
+      ? line + " " + word
+      : word;
+
+    if (
+      ctx.measureText(testLine).width > maxWidth &&
+      line
+    ) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = testLine;
+    }
+
+  });
+
+  if (line) {
+    lines.push(line);
+  }
+
+  return lines;
+}
+
+
+/* ==========================
+   ANIMASI HATI
+========================== */
+
+function createHeart() {
+
+  const heart = document.createElement("span");
+
+  heart.className = "heart";
+
+  const hearts = [
+    "💗", "💕", "💖", "🌸", "❤️"
+  ];
+
+  heart.textContent =
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8500);
+}
+
+// Animasi hati berjalan terus
+setInterval(createHeart, 900);
+
+</script>
+
+</body>
+</html>
